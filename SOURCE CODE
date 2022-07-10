@@ -1,0 +1,143 @@
+using System;
+
+namespace Slots
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //set application stuff
+            Console.Title = "Slots";
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            //random classes for loop
+            int start, end;
+            start = 0;
+            end = 1;
+
+            //start loop for overall program
+            while (start != end)
+            {
+                //ask for starting wage
+                Console.WriteLine("Welcome to SLOTS! How much money would you like to wager? ");
+                string moneyWaged = Console.ReadLine();
+
+                if (moneyWaged == "0")
+                {
+                    Console.WriteLine("Please enter a valid number. ");
+                    Console.WriteLine();
+
+                    Console.ReadLine();
+                }else
+                {
+                    //convert moneyWaged into _moneyLeft
+                    int _moneyLeft = Convert.ToInt32(moneyWaged);
+
+                    while (_moneyLeft > 0)
+                    {
+                        //get random numbers for slot
+                        Random num1 = new Random();
+                        int realNum1 = num1.Next(1, 9);
+                        Random num2 = new Random();
+                        int realNum2 = num2.Next(1, 9);
+                        Random num3 = new Random();
+                        int realNum3 = num3.Next(1, 9);
+                        Random num4 = new Random();
+                        int realNum4 = num4.Next(1, 9);
+                        Random num5 = new Random();
+                        int realNum5 = num5.Next(1, 9);
+                        Random num6 = new Random();
+                        int realNum6 = num6.Next(1, 9);
+                        Random num7 = new Random();
+                        int realNum7 = num7.Next(1, 9);
+                        Random num8 = new Random();
+                        int realNum8 = num8.Next(1, 9);
+                        Random num9 = new Random();
+                        int realNum9 = num9.Next(1, 9);
+                        Random multiplier = new Random();
+                        int realMultiplier = multiplier.Next(2, 10);
+
+                        //tell money waged
+                        Console.WriteLine("You waged: " + moneyWaged);
+
+                        //write numbers, 3 per line
+                        Console.WriteLine("And your numbers were: ");
+                        Console.WriteLine(realNum1 + ", " + realNum2 + ", " + realNum3);
+                        Console.WriteLine(realNum4 + ", " + realNum5 + ", " + realNum6);
+                        Console.WriteLine(realNum7 + ", " + realNum8 + ", " + realNum9);
+                        Console.WriteLine();
+                        Console.WriteLine("The multiplier is " + realMultiplier);
+
+                        //check for win (1, 2, 3)
+                        if (realNum1 == realNum2)
+                        {
+                            if (realNum2 == realNum3)
+                            {
+                                //tell winnings and multiply money left by multiplier
+                                Console.WriteLine();
+                                Console.WriteLine("Congratulations, you win! You waged " + moneyWaged + " and the multiplier was " + realMultiplier);
+                                int moneyLeft = _moneyLeft * realMultiplier;
+                                Console.WriteLine("You now have: " + moneyLeft);
+                                _moneyLeft = moneyLeft;
+
+                                Console.ReadLine();
+                            }
+                        }
+                        //check for win (4, 5, 6)
+                        if (realNum4 == realNum5)
+                        {
+                            if (realNum5 == realNum6)
+                            {
+                                //tell winnings and multiply money left by multiplier
+                                Console.WriteLine();
+                                Console.WriteLine("Congratulations, you win! You waged " + moneyWaged + " and the multiplier was " + realMultiplier);
+                                int moneyLeft = _moneyLeft * realMultiplier;
+                                Console.WriteLine("You now have: " + moneyLeft);
+                                _moneyLeft = moneyLeft;
+
+                                Console.ReadLine();
+                            }
+                        }
+                        //check for win (7, 8, 9)
+                        if (realNum7 == realNum8)
+                        {
+                            if (realNum8 == realNum9)
+                            {
+                                //tell winnings and multiply money left by multiplier
+                                Console.WriteLine();
+                                Console.WriteLine("Congratulations, you win! You waged " + moneyWaged + " and the multiplier was " + realMultiplier);
+                                int moneyLeft = _moneyLeft * realMultiplier;
+                                Console.WriteLine("You now have: " + moneyLeft);
+                                _moneyLeft = moneyLeft;
+
+                                Console.ReadLine();
+                            }
+                        }
+                        else
+                        {
+                            //tell lost
+                            Console.WriteLine();
+                            Console.WriteLine("Sorry friend, you did not win this round.");
+                            Console.WriteLine("You wagered " + moneyWaged + " and the multiplier was " + realMultiplier);
+
+                            //calculate lost
+                            int moneyLeft = _moneyLeft / realMultiplier;
+                            Console.WriteLine("You now have " + moneyLeft + " dollars left ");
+                            _moneyLeft = moneyLeft;
+
+                            Console.ReadLine();
+                        }
+
+                    }
+                        //tell out of money
+                        Console.WriteLine();
+                        Console.WriteLine("Sorry friend, your out of money! ");
+
+                        Console.ReadLine();
+                    
+                }
+            }
+
+        }
+    }
+}
